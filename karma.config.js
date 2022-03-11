@@ -95,34 +95,34 @@ const baseConfig = {
 
   // define browsers
   customLaunchers: {
-    // bs_chrome_windows: {
-    //   base: 'BrowserStack',
-    //   browser: 'Chrome',
-    //   browser_version: 'latest',
-    //   os: 'Windows',
-    //   os_version: '11'
-    // },
-    // bs_firefox_windows: {
-    //   base: 'BrowserStack',
-    //   browser: 'Firefox',
-    //   browser_version: 'latest',
-    //   os: 'Windows',
-    //   os_version: '10'
-    // },
-    // bs_safari_mac: {
-    //   base: 'BrowserStack',
-    //   browser: 'Safari',
-    //   browser_version: 'latest',
-    //   os: 'OS X',
-    //   os_version: 'Monterey'
-    // },
-    // bs_iphone13: {
-    //   base: 'BrowserStack',
-    //   device: 'iPhone 13 Pro',
-    //   os: 'ios',
-    //   os_version: '15',
-    //   real_mobile: 'true'
-    // },
+    bs_chrome_windows: {
+      base: 'BrowserStack',
+      browser: 'Chrome',
+      browser_version: 'latest',
+      os: 'Windows',
+      os_version: '11'
+    },
+    bs_firefox_windows: {
+      base: 'BrowserStack',
+      browser: 'Firefox',
+      browser_version: 'latest',
+      os: 'Windows',
+      os_version: '10'
+    },
+    bs_safari_mac: {
+      base: 'BrowserStack',
+      browser: 'Safari',
+      browser_version: 'latest',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
+    bs_iphone13: {
+      base: 'BrowserStack',
+      device: 'iPhone 13',
+      os: 'ios',
+      os_version: '15',
+      real_mobile: 'true'
+    },
     bs_pixel6: {
       base: 'BrowserStack',
       device: 'Google Pixel 6',
@@ -133,10 +133,10 @@ const baseConfig = {
   },
 
   browsers: [
-    // 'bs_chrome_windows',
-    // 'bs_firefox_windows',
-    // 'bs_safari_mac',
-    // 'bs_iphone13',
+    'bs_chrome_windows',
+    'bs_firefox_windows',
+    'bs_safari_mac',
+    'bs_iphone13',
     'bs_pixel6'
   ],
 
