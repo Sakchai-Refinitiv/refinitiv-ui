@@ -77,7 +77,7 @@ const plugins = [
 ];
 
 // Reporters
-const reporters = ['mocha'];
+const reporters = ['mocha', 'dots', 'BrowserStack'];
 
 console.log(process.env.BROWSERSTACK_USERNAME);
 
@@ -87,49 +87,58 @@ const baseConfig = {
   browserStack: {
     username: process.env.BROWSERSTACK_USERNAME,
     accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-    retryLimit: 0
+    retryLimit: 0,
+    project: 'Element Framework',
+    name: 'GitHub Action',
+    build: process.env.BROWSERSTACK_BUILD
   },
 
   // define browsers
   customLaunchers: {
-    bs_chrome_windows: {
-      base: 'BrowserStack',
-      browser: 'Chrome',
-      browser_version: 'latest',
-      os: 'Windows',
-      os_version: '11'
-    },
-    bs_firefox_windows: {
-      base: 'BrowserStack',
-      browser: 'Firefox',
-      browser_version: 'latest',
-      os: 'Windows',
-      os_version: '10'
-    },
-    bs_safari_mac: {
-      base: 'BrowserStack',
-      browser: 'Safari',
-      browser_version: 'latest',
-      os: 'OS X',
-      os_version: 'Monterey'
-    },
-    bs_iphone13: {
-      base: 'BrowserStack',
-      device: 'iPhone 13 Pro Max',
-      os: 'ios',
-      os_version: '15',
-      real_mobile: 'true'
-    },
+    // bs_chrome_windows: {
+    //   base: 'BrowserStack',
+    //   browser: 'Chrome',
+    //   browser_version: 'latest',
+    //   os: 'Windows',
+    //   os_version: '11'
+    // },
+    // bs_firefox_windows: {
+    //   base: 'BrowserStack',
+    //   browser: 'Firefox',
+    //   browser_version: 'latest',
+    //   os: 'Windows',
+    //   os_version: '10'
+    // },
+    // bs_safari_mac: {
+    //   base: 'BrowserStack',
+    //   browser: 'Safari',
+    //   browser_version: 'latest',
+    //   os: 'OS X',
+    //   os_version: 'Monterey'
+    // },
+    // bs_iphone13: {
+    //   base: 'BrowserStack',
+    //   device: 'iPhone 13 Pro',
+    //   os: 'ios',
+    //   os_version: '15',
+    //   real_mobile: 'true'
+    // },
     bs_pixel6: {
       base: 'BrowserStack',
       device: 'Google Pixel 6',
-      browser: 'Android',
+      os: 'android',
       os_version: '12.0',
       real_mobile: 'true'
     }
   },
 
-  browsers: ['bs_chrome_windows', 'bs_firefox_windows', 'bs_safari_mac', 'bs_iphone13', 'bs_pixel6'],
+  browsers: [
+    // 'bs_chrome_windows',
+    // 'bs_firefox_windows',
+    // 'bs_safari_mac',
+    // 'bs_iphone13',
+    'bs_pixel6'
+  ],
 
 
 
@@ -138,7 +147,7 @@ const baseConfig = {
   autoWatch: argv.watch,
   singleRun: !argv.watch,
   basePath: ROOT, // must be in the root in order for node_modules to be resolved correctly
-  concurrency: 1, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
+  concurrency: 5, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
   // IE 11 must add extra time to loading all scripts for testing concurrently.
   browserNoActivityTimeout: 60000 * 2,
   browserDisconnectTimeout: 60000 * 2,
