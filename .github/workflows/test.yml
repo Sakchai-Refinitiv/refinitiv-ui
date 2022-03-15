@@ -1,9 +1,9 @@
 name: Test
 on:
-  pull_request:
-    branches: [develop]
+  push:
+    branches: [test-change-button]
 env:
-  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+  BASE_SHA: test-change-button
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,9 +28,9 @@ jobs:
 
       - name: Build
         if: steps.setup.outputs.cache-build-hit != 'true'
-        run: npm run build:affected -- --base=$BASE_SHA
+        run: npm run build
 
-  lint:
+  chrome:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -42,26 +42,11 @@ jobs:
       - name: Setup resources and environment
         uses: ./.github/actions/setup
 
-      - name: Lint
-        run: npm run lint:affected -- --base=$BASE_SHA
-
-  chrome:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Setup resources and environment
-        uses: ./.github/actions/setup
-
       - name: Test
-        run: npm run test:affected -- --base=$BASE_SHA --browsers chrome
+        run: npm run test:all -- --browsers chrome
 
   firefox:
-    needs: lint
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -74,4 +59,4 @@ jobs:
 
       - name: Test
         # TODO: `@refinitiv/core` has test coverage below threshold on Firefox
-        run: npm run test:affected -- --base=$BASE_SHA --browsers firefox --includeCoverage false
+        run: npm run test:all -- --browsers firefox --includeCoverage false

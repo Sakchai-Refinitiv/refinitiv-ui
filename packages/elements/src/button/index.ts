@@ -62,6 +62,8 @@ export class Button extends ControlElement {
   @property({ type: String, reflect: true })
   public icon: string | null = null;
 
+  public test = true;
+
   /**
    * Specify icon to display when hovering. Value can be icon name
    */
