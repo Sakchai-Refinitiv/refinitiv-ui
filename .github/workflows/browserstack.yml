@@ -59,7 +59,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Test
-        run: npm run test calendar
+        run: npm run test:affected -- --base=$BASE_SHA --browsers chrome
 
       - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
         uses: browserstack/github-actions/setup-local@master
