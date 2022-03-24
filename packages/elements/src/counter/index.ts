@@ -131,6 +131,10 @@ export class Counter extends BasicElement {
     const countValue = truncateDecimal(value);
     const maxValue = this.max ? truncateDecimal(this.max) : Infinity;
 
+    // TODO: Remove test
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const a = true;
+
 
     // Format value if value greater than max
     // If max is null, it will show the value
