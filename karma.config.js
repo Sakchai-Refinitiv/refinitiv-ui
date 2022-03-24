@@ -145,9 +145,9 @@ const baseConfig = {
   },
 
   browsers: [
-    'bs_chrome_windows',
+    // 'bs_chrome_windows',
     // 'bs_firefox_windows',
-    // 'bs_chrome_mac',
+    'bs_chrome_mac',
     // 'bs_firefox_mac',
     // 'bs_safari_mac',
     // 'bs_iphone13',
