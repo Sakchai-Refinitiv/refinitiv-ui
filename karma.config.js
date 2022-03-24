@@ -79,7 +79,40 @@ const plugins = [
 // Reporters
 const reporters = ['mocha'];
 
+console.log(process.env.BROWSERSTACK_USERNAME);
+
 const baseConfig = {
+
+  // global config of your BrowserStack account
+  browserStack: {
+    username: process.env.BROWSERSTACK_USERNAME,
+    accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    retryLimit: 0
+  },
+
+  // define browsers
+  customLaunchers: {
+    bs_firefox_mac: {
+      base: 'BrowserStack',
+      browser: 'firefox',
+      browser_version: 'latest',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
+    bs_iphone5: {
+      base: 'BrowserStack',
+      device: 'iPhone 13',
+      os: 'ios',
+      os_version: '15'
+    }
+  },
+
+  browsers: ['bs_firefox_mac', 'bs_iphone5'],
+
+
+
+
+
   autoWatch: argv.watch,
   singleRun: !argv.watch,
   basePath: ROOT, // must be in the root in order for node_modules to be resolved correctly
@@ -135,28 +168,28 @@ const baseConfig = {
 };
 
 // Do not run headless browsers in watch mode, it significantly slow down debugging
-if (!argv.watch) {
-  baseConfig.browsers = argv.browsers;
-  baseConfig.customLaunchers = {
-    firefox: {
-      base: 'Firefox',
-        flags: ['-headless']
-    },
-    chrome: {
-      base: 'ChromeHeadless',
-        flags: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-translate',
-        '--disable-extensions'
-      ]
-    },
-    ie: {
-      base: 'IE',
-        flags: ['-extoff']
-    }
-  };
-}
+// if (!argv.watch) {
+//   baseConfig.browsers = argv.browsers;
+//   baseConfig.customLaunchers = {
+//     firefox: {
+//       base: 'Firefox',
+//         flags: ['-headless']
+//     },
+//     chrome: {
+//       base: 'ChromeHeadless',
+//         flags: [
+//         '--no-sandbox',
+//         '--disable-setuid-sandbox',
+//         '--disable-translate',
+//         '--disable-extensions'
+//       ]
+//     },
+//     ie: {
+//       base: 'IE',
+//         flags: ['-extoff']
+//     }
+//   };
+// }
 
 // Snapshots needs specific configuration
 if (argv.includeSnapshots) {
