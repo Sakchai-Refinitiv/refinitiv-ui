@@ -79,8 +79,6 @@ const plugins = [
 // Reporters
 const reporters = ['mocha', 'dots', 'BrowserStack'];
 
-console.log(process.env.BROWSERSTACK_USERNAME);
-
 const baseConfig = {
 
   // global config of your BrowserStack account
@@ -89,7 +87,7 @@ const baseConfig = {
     accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
     retryLimit: 0,
     project: 'Element Framework',
-    name: 'GitHub Action',
+    name: packageName,
     build: process.env.BROWSERSTACK_BUILD
   },
 
@@ -148,9 +146,9 @@ const baseConfig = {
 
   browsers: [
     'bs_chrome_windows',
-    'bs_firefox_windows',
-    'bs_chrome_mac',
-    'bs_firefox_mac',
+    // 'bs_firefox_windows',
+    // 'bs_chrome_mac',
+    // 'bs_firefox_mac',
     // 'bs_safari_mac',
     // 'bs_iphone13',
     // 'bs_pixel6'
@@ -215,28 +213,24 @@ const baseConfig = {
 };
 
 // Do not run headless browsers in watch mode, it significantly slow down debugging
-// if (!argv.watch) {
-//   baseConfig.browsers = argv.browsers;
-//   baseConfig.customLaunchers = {
-//     firefox: {
-//       base: 'Firefox',
-//         flags: ['-headless']
-//     },
-//     chrome: {
-//       base: 'ChromeHeadless',
-//         flags: [
-//         '--no-sandbox',
-//         '--disable-setuid-sandbox',
-//         '--disable-translate',
-//         '--disable-extensions'
-//       ]
-//     },
-//     ie: {
-//       base: 'IE',
-//         flags: ['-extoff']
-//     }
-//   };
-// }
+if (!argv.watch && 999 === 000) {
+  baseConfig.browsers = argv.browsers;
+  baseConfig.customLaunchers = {
+    chrome: {
+      base: 'ChromeHeadless',
+        flags: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-translate',
+        '--disable-extensions'
+      ]
+    },
+    ie: {
+      base: 'IE',
+        flags: ['-extoff']
+    }
+  };
+}
 
 // Snapshots needs specific configuration
 if (argv.includeSnapshots) {
