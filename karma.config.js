@@ -116,6 +116,13 @@ const baseConfig = {
       os: 'OS X',
       os_version: 'Monterey'
     },
+    bs_firefox_mac: {
+      base: 'BrowserStack',
+      browser: 'Firefox',
+      browser_version: 'latest',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
     bs_safari_mac: {
       base: 'BrowserStack',
       browser: 'Safari',
@@ -142,7 +149,8 @@ const baseConfig = {
   browsers: [
     'bs_chrome_windows',
     'bs_firefox_windows',
-    'bs_chrome_mac'
+    'bs_chrome_mac',
+    'bs_firefox_mac',
     // 'bs_safari_mac',
     // 'bs_iphone13',
     // 'bs_pixel6'
