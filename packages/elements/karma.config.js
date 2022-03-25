@@ -10,6 +10,8 @@ const testAll = ELEMENT === 'all' || ELEMENT === undefined;
 module.exports = async function (config) {
   const elementsConfig = await extractConfig(karmaConfig);
 
+  elementsConfig.browserStack.name = ELEMENT === 'all' ? 'elements' : ELEMENT;
+
   // Must be resolved from root point of view
   elementsConfig.files = [
     {

@@ -85,7 +85,7 @@ const baseConfig = {
   browserStack: {
     username: process.env.BROWSERSTACK_USERNAME,
     accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-    retryLimit: 0,
+    retryLimit: 2, // Default is 3
     project: 'Element Framework',
     name: packageName,
     build: process.env.BROWSERSTACK_BUILD

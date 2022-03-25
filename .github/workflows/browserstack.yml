@@ -3,7 +3,8 @@ on:
   push:
     branches: [browserstack]
 env:
-  BASE_SHA: develop
+  BASE_SHA: ${{ github.event.pull_request.base.sha }}
+  BASE_SHA_TEST: d5252888bb892368c4e7b93065f74cc6d216c8da # v6 sha (Test only)
   BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
   BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
   BROWSERSTACK_BUILD: ${{ github.run_number }}
@@ -59,7 +60,8 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Test
-        run: npm run test:all
+        run: npm run test:affected -- --base=$BASE_SHA_TEST
+        # run: npm run test:all
 
       - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
         uses: browserstack/github-actions/setup-local@master
