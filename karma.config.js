@@ -70,6 +70,7 @@ const plugins = [
   require.resolve('karma-source-map-support'),
   require.resolve('karma-chrome-launcher'),
   require.resolve('karma-firefox-launcher'),
+  require.resolve('karma-browserstack-launcher'),
   require.resolve('karma-ie-launcher'),
 
   // fallback: resolve any karma- plugins
@@ -77,7 +78,7 @@ const plugins = [
 ];
 
 // Reporters
-const reporters = ['mocha', 'dots', 'BrowserStack'];
+const reporters = ['mocha', 'BrowserStack'];
 
 const baseConfig = {
 
@@ -85,6 +86,7 @@ const baseConfig = {
   browserStack: {
     username: process.env.BROWSERSTACK_USERNAME,
     accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    timeout: 600,
     retryLimit: 2, // Default is 3
     project: 'Element Framework',
     name: packageName,
@@ -205,19 +207,21 @@ const baseConfig = {
   preprocessors,
   reporters,
   mochaReporter: {
-    showDiff: true
+    showDiff: true,
+    output: 'minimal'
   },
   restartOnFileChange: false,
   client: {
     mocha: {
-      reporter: 'html'
+      reporter: 'html',
+      captureConsole: false
     }
   },
   colors: true
 };
 
 // Do not run headless browsers in watch mode, it significantly slow down debugging
-if (!argv.watch && 999 === 000) {
+if (!argv.watch && true === false) {
   baseConfig.browsers = argv.browsers;
   baseConfig.customLaunchers = {
     chrome: {
@@ -276,6 +280,5 @@ if (argv.includeCoverage) {
 }
 
 module.exports = async function (config) {
-  baseConfig.logLevel = config.LOG_DEBUG;
   config.set(baseConfig);
 };
