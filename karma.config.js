@@ -212,9 +212,9 @@ const baseConfig = {
   },
   restartOnFileChange: false,
   client: {
+    captureConsole: false,
     mocha: {
-      reporter: 'html',
-      captureConsole: false
+      reporter: 'html'
     }
   },
   colors: true
