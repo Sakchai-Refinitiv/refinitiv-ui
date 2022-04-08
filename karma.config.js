@@ -163,8 +163,12 @@ const baseConfig = {
   basePath: ROOT, // must be in the root in order for node_modules to be resolved correctly
   concurrency: 5, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
   // IE 11 must add extra time to loading all scripts for testing concurrently.
-  browserNoActivityTimeout: 60000 * 2,
-  browserDisconnectTimeout: 60000 * 2,
+  captureTimeout: 3e5,
+  browserDisconnectTolerance: 0,
+  browserDisconnectTimeout: 3e5,
+  browserSocketTimeout: 1.2e5,
+  browserNoActivityTimeout: 3e5,
+
   files,
   esm: {
     coverage: argv.includeCoverage,
@@ -272,5 +276,6 @@ if (argv.includeCoverage) {
 }
 
 module.exports = async function (config) {
+  baseConfig.logLevel = config.LOG_DEBUG;
   config.set(baseConfig);
 };
