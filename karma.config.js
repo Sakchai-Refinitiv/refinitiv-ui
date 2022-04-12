@@ -102,10 +102,24 @@ const baseConfig = {
       os: 'Windows',
       os_version: '11'
     },
+    bs_chrome_prev_windows: {
+      base: 'BrowserStack',
+      browser: 'Chrome',
+      browser_version: 'latest-1',
+      os: 'Windows',
+      os_version: '11'
+    },
     bs_firefox_windows: {
       base: 'BrowserStack',
       browser: 'Firefox',
       browser_version: 'latest',
+      os: 'Windows',
+      os_version: '10'
+    },
+    bs_firefox_prev_windows: {
+      base: 'BrowserStack',
+      browser: 'Firefox',
+      browser_version: 'latest-1',
       os: 'Windows',
       os_version: '10'
     },
@@ -116,6 +130,13 @@ const baseConfig = {
       os: 'OS X',
       os_version: 'Monterey'
     },
+    bs_chrome_prev_mac: {
+      base: 'BrowserStack',
+      browser: 'Chrome',
+      browser_version: 'latest-1',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
     bs_firefox_mac: {
       base: 'BrowserStack',
       browser: 'Firefox',
@@ -123,10 +144,24 @@ const baseConfig = {
       os: 'OS X',
       os_version: 'Monterey'
     },
+    bs_firefox_prev_mac: {
+      base: 'BrowserStack',
+      browser: 'Firefox',
+      browser_version: 'latest-1',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
     bs_safari_mac: {
       base: 'BrowserStack',
       browser: 'Safari',
       browser_version: 'latest',
+      os: 'OS X',
+      os_version: 'Monterey'
+    },
+    bs_safari_prev_mac: {
+      base: 'BrowserStack',
+      browser: 'Safari',
+      browser_version: 'latest-1',
       os: 'OS X',
       os_version: 'Monterey'
     },
@@ -147,11 +182,18 @@ const baseConfig = {
   },
 
   browsers: [
-    // 'bs_chrome_windows',
-    // 'bs_firefox_windows',
+    // Latest version
+    'bs_chrome_windows',
+    'bs_firefox_windows',
     'bs_chrome_mac',
-    // 'bs_firefox_mac',
-    // 'bs_safari_mac',
+    'bs_firefox_mac',
+    'bs_safari_mac',
+    // Previous version
+    'bs_chrome_prev_windows',
+    'bs_firefox_prev_windows',
+    'bs_chrome_prev_mac',
+    'bs_firefox_prev_mac',
+    'bs_safari_prev_mac',
     // 'bs_iphone13',
     // 'bs_pixel6'
   ],
