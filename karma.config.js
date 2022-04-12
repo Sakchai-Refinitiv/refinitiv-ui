@@ -107,14 +107,14 @@ const baseConfig = {
       browser: 'Chrome',
       browser_version: 'latest-1',
       os: 'Windows',
-      os_version: '11'
+      os_version: '10'
     },
     bs_firefox_windows: {
       base: 'BrowserStack',
       browser: 'Firefox',
       browser_version: 'latest',
       os: 'Windows',
-      os_version: '10'
+      os_version: '11'
     },
     bs_firefox_prev_windows: {
       base: 'BrowserStack',
@@ -187,13 +187,13 @@ const baseConfig = {
     'bs_firefox_windows',
     'bs_chrome_mac',
     'bs_firefox_mac',
-    'bs_safari_mac',
+    // 'bs_safari_mac',
     // Previous version
     'bs_chrome_prev_windows',
     'bs_firefox_prev_windows',
-    'bs_chrome_prev_mac',
-    'bs_firefox_prev_mac',
-    'bs_safari_prev_mac',
+    // 'bs_chrome_prev_mac',
+    // 'bs_firefox_prev_mac',
+    // 'bs_safari_prev_mac',
     // 'bs_iphone13',
     // 'bs_pixel6'
   ],
@@ -205,7 +205,7 @@ const baseConfig = {
   autoWatch: argv.watch,
   singleRun: !argv.watch,
   basePath: ROOT, // must be in the root in order for node_modules to be resolved correctly
-  concurrency: 3, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
+  concurrency: 1, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
   // IE 11 must add extra time to loading all scripts for testing concurrently.
   captureTimeout: 3e5,
   browserDisconnectTolerance: 0,
