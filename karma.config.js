@@ -86,7 +86,7 @@ const baseConfig = {
   browserStack: {
     username: process.env.BROWSERSTACK_USERNAME,
     accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-    timeout: 600,
+    timeout: 1000,
     retryLimit: 2, // Default is 3
     project: 'Element Framework',
     name: packageName,
@@ -205,7 +205,7 @@ const baseConfig = {
   autoWatch: argv.watch,
   singleRun: !argv.watch,
   basePath: ROOT, // must be in the root in order for node_modules to be resolved correctly
-  concurrency: 5, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
+  concurrency: 10, // Set the value to `1`, When Karma has a problem to connect a test browser on Windows.
   // IE 11 must add extra time to loading all scripts for testing concurrently.
   captureTimeout: 3e5,
   browserDisconnectTolerance: 0,
