@@ -185,12 +185,12 @@ const baseConfig = {
     // Latest version
     'bs_chrome_windows',
     'bs_firefox_windows',
-    'bs_chrome_mac',
-    'bs_firefox_mac',
+    // 'bs_chrome_mac',
+    // 'bs_firefox_mac',
     // 'bs_safari_mac',
     // Previous version
-    'bs_chrome_prev_windows',
-    'bs_firefox_prev_windows',
+    // 'bs_chrome_prev_windows',
+    // 'bs_firefox_prev_windows',
     // 'bs_chrome_prev_mac',
     // 'bs_firefox_prev_mac',
     // 'bs_safari_prev_mac',
