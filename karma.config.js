@@ -182,7 +182,7 @@ const baseConfig = {
   },
 
   browsers: [
-    // Latest version
+    // Latest version test
     'bs_chrome_windows',
     'bs_firefox_windows',
     // 'bs_chrome_mac',
