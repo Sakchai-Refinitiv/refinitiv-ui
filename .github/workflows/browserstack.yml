@@ -5,8 +5,8 @@ on:
 env:
   BASE_SHA: ${{ github.event.pull_request.base.sha }}
   BASE_SHA_TEST: d5252888bb892368c4e7b93065f74cc6d216c8da # v6 sha (Test only)
-  BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-  BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+  BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_GITHUB_USERNAME }}
+  BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_GITHUB_ACCESS_KEY }}
   BROWSERSTACK_BUILD: ${{ github.run_number }}
 jobs:
   build:
@@ -42,8 +42,8 @@ jobs:
       - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
         uses: browserstack/github-actions/setup-env@master
         with:
-          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          username:  ${{ secrets.BROWSERSTACK_GITHUB_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_GITHUB_ACCESS_KEY }}
 
       - name: 'BrowserStack Local Tunnel Setup'  # Invokes the setup-local action
         uses: browserstack/github-actions/setup-local@master
