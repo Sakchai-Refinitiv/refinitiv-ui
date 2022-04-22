@@ -60,8 +60,8 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Test
-        run: npm run test:affected -- --base=$BASE_SHA_TEST
-        # run: npm run test:all
+        # run: npm run test:affected -- --base=$BASE_SHA_TEST
+        run: npm run test:all
 
       - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
         uses: browserstack/github-actions/setup-local@master

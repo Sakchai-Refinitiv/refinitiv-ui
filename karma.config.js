@@ -78,7 +78,7 @@ const plugins = [
 ];
 
 // Reporters
-const reporters = ['mocha', 'BrowserStack'];
+const reporters = ['progress', 'BrowserStack'];
 
 const baseConfig = {
 
@@ -184,7 +184,7 @@ const baseConfig = {
   browsers: [
     // Latest version test
     'bs_chrome_windows',
-    'bs_firefox_windows',
+    // 'bs_firefox_windows',
     // 'bs_chrome_mac',
     // 'bs_firefox_mac',
     // 'bs_safari_mac',
