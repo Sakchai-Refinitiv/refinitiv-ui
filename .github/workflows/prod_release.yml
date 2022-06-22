@@ -1,24 +1,15 @@
-name: Production Release
+name: Production Release Test
 
 on:
   workflow_dispatch:
-    inputs:
-      force:
-        description: Force publish all packages?
-        type: boolean
 
 jobs:
   publish:
-    environment:
-      name: production
-      url: https://ui.refinitiv.com
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
-          # Number of commits to fetch. 0 indicates all history for all branches and tags.
-          # Pulls all commits (needed for Lerna)
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
 
@@ -27,25 +18,10 @@ jobs:
           git config --global user.email "RefinitivUIDev@refinitiv.com"
           git config --global user.name "refinitiv-ui-dev"
 
-      - name: Gather resources and build
-        uses: ./.github/actions/checkout-install-and-build
-
-      - name: Bump all package versions and create GitHub release
-        if: ${{ github.event.inputs.force }}
-        run: lerna version --create-release github --conventional-commits --force-publish --yes
+      - name: Commit
+        run: |
+          git commit --allow-empty -m "New Commit [skip ci]"
+          git push
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Bump modified package versions and create GitHub release
-        if: ${{ !github.event.inputs.force }}
-        run: lerna version --create-release github --conventional-commits --yes
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: Publish to NPM
-        run: lerna publish from-git --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish Docs
-        run: curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/${{ secrets.CF_DEPLOY_HOOKS_ID }}"
