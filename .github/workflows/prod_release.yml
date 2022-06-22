@@ -20,7 +20,11 @@ jobs:
 
       - name: Commit
         run: |
-          git commit --allow-empty -m "New Commit [skip ci]"
+          git commit --allow-empty -m "New Commit [skip ci]
+
+
+          skip-checks: true
+          "
           git push
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
