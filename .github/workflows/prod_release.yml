@@ -20,12 +20,8 @@ jobs:
 
       - name: Commit
         run: |
-          git commit --allow-empty -m "New Commit [skip ci]
-
-
-          skip-checks: true
-          "
-          git push
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          git commit --allow-empty -m "Release [skip ci]
+          git checkout -b check_released && git push
+          sleep 1m
+          git checkout v6 && git push
 

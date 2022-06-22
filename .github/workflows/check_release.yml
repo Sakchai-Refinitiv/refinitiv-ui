@@ -1,0 +1,25 @@
+name: Check Release
+on:
+  branches:
+    - 'check_released'
+  paths:
+    - '**/CHANGELOG.md'
+jobs:
+  build:
+    if: !startsWith(github.event.head_commit.message,'Release')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "Skip Build"
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: echo "Skip Lint"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "Skip Test"
+
+
