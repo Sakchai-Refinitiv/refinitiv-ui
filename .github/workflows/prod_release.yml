@@ -20,7 +20,7 @@ jobs:
 
       - name: Commit
         run: |
-          git commit --allow-empty -m "Release [skip ci]
+          git commit --allow-empty -m "Release [skip ci]"
           git checkout -b check_released && git push
           sleep 1m
           git checkout v6 && git push
