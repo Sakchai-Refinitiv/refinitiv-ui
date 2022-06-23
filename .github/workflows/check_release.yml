@@ -1,12 +1,13 @@
 name: Check Release
-on:
-  branches:
-    - 'check_released'
-  paths:
-    - '**/CHANGELOG.md'
+on: workflow_dispatch
+# on:
+#   branches:
+#     - 'check_released'
+#   paths:
+#     - '**/CHANGELOG.md'
 jobs:
   build:
-    if: !startsWith(github.event.head_commit.message,'Release')
+    if: startsWith(github.event.head_commit.message,'chore(release)')
     runs-on: ubuntu-latest
     steps:
       - name: Build

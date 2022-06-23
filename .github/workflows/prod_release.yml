@@ -3,6 +3,9 @@ name: Production Release Test
 on:
   workflow_dispatch:
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -28,11 +31,17 @@ jobs:
         run: |
           git checkout -b check_released
           git push --set-upstream origin check_released
+          gh workflow run check_release.yml --ref check_released
           echo "Waiting Checks for 1 minute"
-          sleep 1m
+          sleep 2m
 
       - name: Push to origin
         run: |
-          git checkout
+          git checkout v6
           git push
+
+      - name: Clean Up
+        run: |
+          git push origin --delete check_released
+          echo "Branch check_release removed"
 
