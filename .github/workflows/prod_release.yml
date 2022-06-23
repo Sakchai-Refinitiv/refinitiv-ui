@@ -23,25 +23,14 @@ jobs:
 
       - name: Create Release Commit
         run: |
+          git checkout -b new_release
           echo "Test" >> packages/core/CHANGELOG.md
           git add packages/core/CHANGELOG.md
           git commit -m "chore(release): publish [skip ci]"
+          git push --set-upstream origin new_release
 
-      - name: Trigger Checks Workflows
+      - name: Create PR and Auto Merge
         run: |
-          git checkout -b check_released
-          git push --set-upstream origin check_released
-          gh workflow run check_release.yml --ref check_released
-          echo "Waiting Checks for 1 minute"
-          sleep 2m
-
-      - name: Push to origin
-        run: |
-          git checkout v6
-          git push
-
-      - name: Clean Up
-        run: |
-          git push origin --delete check_released
-          echo "Branch check_release removed"
+          gh pr create --base v6 --head new_release --fill
+          gh pr merge new_release --admin --auto --merge --delete-branch
 
