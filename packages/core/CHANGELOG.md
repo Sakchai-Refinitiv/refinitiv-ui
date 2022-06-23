@@ -188,3 +188,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [5.0.0-beta.0](https://git.sami.int.thomsonreuters.com/elf/refinitiv-ui/compare/@refinitiv-ui/core@5.0.0-alpha.7...@refinitiv-ui/core@5.0.0-beta.0) (2021-06-22)
 
 **Note:** Version bump only for package @refinitiv-ui/core
+Test
